@@ -133,6 +133,7 @@ class SecurityController extends Controller
             if ($this->module->enableTwoFactorAuthentication && $form->validate()) {
                 if ($form->getUser()->auth_tf_enabled) {
                     Yii::$app->session->set('credentials', ['login' => $form->login, 'pwd' => $form->password]);
+                    Yii::$app->session->set('rememberMe', $form->rememberMe);
 
                     return $this->redirect(['confirm']);
                 }
@@ -175,6 +176,10 @@ class SecurityController extends Controller
         $form = $this->make(LoginForm::class);
         $form->login = $credentials['login'];
         $form->password = $credentials['pwd'];
+        if (Yii::$app->session->has('rememberMe')) {
+            $form->rememberMe = Yii::$app->session->get('rememberMe');
+        }
+
         $form->setScenario('2fa');
 
         /** @var FormEvent $event */
