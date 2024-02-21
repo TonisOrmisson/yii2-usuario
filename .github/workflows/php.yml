@@ -43,7 +43,7 @@ jobs:
 
             - name: Verify MariaDB connection
               run: |
-                  while ! mysqladmin ping -h"mariadb" --silent; do
+                  while ! mysqladmin ping -h"127.0.0.1" --silent; do
                     sleep 1
                   done
 
@@ -59,11 +59,8 @@ jobs:
                   restore-keys: |
                       ${{ runner.os }}-php-
 
-            - name: mariadb version
-              run: mysql -V -mariadb  -uroot -ppassword
-
             - name: Verify db connection & databases
-              run: mysql -e "SHOW DATABASES;" -hmariadb  -uroot -ppassword
+              run: mysql -e "SHOW DATABASES;" -h127.0.0.1  -uroot -ppassword
 
             - name: Install
               run: composer install --prefer-dist --no-interaction
