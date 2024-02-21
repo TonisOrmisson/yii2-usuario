@@ -18,7 +18,7 @@ jobs:
 
         services:
             mariadb:
-                image: mariadb:latest
+                image: mariadb:lts
                 ports:
                     - 3306:3306
                 env:
@@ -59,6 +59,8 @@ jobs:
                   restore-keys: |
                       ${{ runner.os }}-php-
 
+            - name: mariadb version
+              run: mysql -V -h127.0.0.1  -uroot -ppassword
 
             - name: Verify db connection & databases
               run: mysql -e "SHOW DATABASES;" -h127.0.0.1  -uroot -ppassword
