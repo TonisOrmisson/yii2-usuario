@@ -18,7 +18,7 @@ jobs:
 
         services:
             mariadb:
-                image: mariadb:11.2
+                image: mariadb:lts
                 ports:
                     - 3306:3306
                 env:
@@ -43,7 +43,7 @@ jobs:
 
             - name: Verify MariaDB connection
               run: |
-                  while ! mysqladmin ping -h"127.0.0.1" --silent; do
+                  while ! mysqladmin ping -h"mariadb" --silent; do
                     sleep 1
                   done
 
@@ -60,13 +60,10 @@ jobs:
                       ${{ runner.os }}-php-
 
             - name: mariadb version
-              run: mysql -V -h127.0.0.1  -uroot -ppassword
-
-            - name: mariadb version
-              run: mysql -V
+              run: mysql -V -mariadb  -uroot -ppassword
 
             - name: Verify db connection & databases
-              run: mysql -e "SHOW DATABASES;" -h127.0.0.1  -uroot -ppassword
+              run: mysql -e "SHOW DATABASES;" -hmariadb  -uroot -ppassword
 
             - name: Install
               run: composer install --prefer-dist --no-interaction
