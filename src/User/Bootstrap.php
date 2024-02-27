@@ -59,14 +59,13 @@ class Bootstrap implements BootstrapInterface
                 $this->initUrlRoutes($app);
                 $this->initUrlRestRoutes($app);
                 $this->initAuthCollection($app);
-                $this->initAuthManager($app);
             } else {
                 if(!($app instanceof ConsoleApplication)) {
                     throw new InvalidConfigException();
                 }
                 $this->initConsoleCommands($app);
-                $this->initAuthManager($app);
             }
+            $this->initAuthManager($app);
         }
     }
 

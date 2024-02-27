@@ -44,7 +44,9 @@ class TwoFactorAuthenticationEnforceFilter extends ActionFilter
         $itemsByUser = array_keys($this->getAuthManager()->getItemsByUser($user->id));
         if (!empty(array_intersect($permissions, $itemsByUser)) && !$user->auth_tf_enabled) {
             Yii::$app->session->setFlash('warning', Yii::t('usuario', 'Your role requires 2FA, you won\'t be able to use the application until you enable it'));
-            return Yii::$app->response->redirect(['/user/settings/account'])->send();
+            $response = Yii::$app->response->redirect(['/user/settings/account']);
+            $response->send();
+            return $response;
         }
 
         return parent::beforeAction($action);

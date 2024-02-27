@@ -36,7 +36,9 @@ class PasswordAgeEnforceFilter extends ActionFilter
         if ($identity->password_age >= $maxPasswordAge) {
             // Force password change
             Yii::$app->getSession()->setFlash('warning', Yii::t('usuario', 'Your password has expired, you must change it now'));
-            return Yii::$app->response->redirect(['/user/settings/account'])->send();
+            $response = Yii::$app->response->redirect(['/user/settings/account']);
+            $response->send();
+            return $response;
         }
 
         return parent::beforeAction($action);

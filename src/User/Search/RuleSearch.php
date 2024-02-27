@@ -74,7 +74,8 @@ class RuleSearch extends Rule
             $query->where('0=1');
         }
 
-        return $this->make(
+        /** @var ActiveDataProvider $object */
+        $object = $this->make(
             ActiveDataProvider::class,
             [],
             [
@@ -85,5 +86,6 @@ class RuleSearch extends Rule
                 ]
             ]
         );
+        return $object;
     }
 }

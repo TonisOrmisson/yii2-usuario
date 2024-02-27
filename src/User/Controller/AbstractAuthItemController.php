@@ -164,11 +164,10 @@ abstract class AbstractAuthItemController extends Controller
      */
     abstract protected function getSearchModelClass();
 
+
     /**
-     * Returns the an auth item.
-     *
+     * Returns an auth item.
      * @param string $name
-     *
      * @return \yii\rbac\Role|\yii\rbac\Permission|\yii\rbac\Rule
      */
     abstract protected function getItem($name);

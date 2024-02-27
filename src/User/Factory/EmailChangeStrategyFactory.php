@@ -18,6 +18,7 @@ use Da\User\Strategy\InsecureEmailChangeStrategy;
 use Da\User\Strategy\SecureEmailChangeStrategy;
 use Exception;
 use Yii;
+use yii\base\InvalidArgumentException;
 use yii\base\InvalidParamException;
 
 class EmailChangeStrategyFactory
@@ -30,7 +31,6 @@ class EmailChangeStrategyFactory
 
     /**
      * @param $strategy
-     * @param SettingsForm $form
      *
      * @throws Exception
      * @return MailChangeStrategyInterface
@@ -39,39 +39,41 @@ class EmailChangeStrategyFactory
     public static function makeByStrategyType($strategy, SettingsForm $form)
     {
         if (array_key_exists($strategy, static::$map)) {
-            return Yii::$container->get(static::$map[$strategy], [$form]);
+            /** @var MailChangeStrategyInterface $object */
+            $object = Yii::$container->get(static::$map[$strategy], [$form]);
+            return $object;
         }
 
-        throw new InvalidParamException('Unknown strategy type');
+        throw new InvalidArgumentException('Unknown strategy type');
     }
 
     /**
-     * @param SettingsForm $form
-     *
      * @return DefaultEmailChangeStrategy
      */
     public static function makeDefaultEmailChangeStrategy(SettingsForm $form)
     {
-        return Yii::$container->get(static::$map[MailChangeStrategyInterface::TYPE_DEFAULT], [$form]);
+        /** @var DefaultEmailChangeStrategy $object */
+        $object = Yii::$container->get(static::$map[MailChangeStrategyInterface::TYPE_DEFAULT], [$form]);
+        return $object;
     }
 
     /**
-     * @param SettingsForm $form
-     *
      * @return InsecureEmailChangeStrategy
      */
     public static function makeInsecureEmailChangeStrategy(SettingsForm $form)
     {
-        return Yii::$container->get(static::$map[MailChangeStrategyInterface::TYPE_INSECURE], [$form]);
+        /** @var InsecureEmailChangeStrategy $object */
+        $object =Yii::$container->get(static::$map[MailChangeStrategyInterface::TYPE_INSECURE], [$form]);
+        return $object;
     }
 
     /**
-     * @param SettingsForm $form
-     *
      * @return SecureEmailChangeStrategy
      */
     public static function makeSecureEmailChangeStrategy(SettingsForm $form)
     {
-        return Yii::$container->get(static::$map[MailChangeStrategyInterface::TYPE_SECURE], [$form]);
+        /** @var SecureEmailChangeStrategy $object */
+        $object = Yii::$container->get(static::$map[MailChangeStrategyInterface::TYPE_SECURE], [$form]);
+        return $object;
     }
 }
