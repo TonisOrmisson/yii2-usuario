@@ -57,6 +57,7 @@
         "php": ">=7.4",
         "kartik-v/yii2-widget-select2": "^2.2",
         "yiisoft/yii2-bootstrap5": "^2.0",
+        "twbs/bootstrap-icons": "^1.10",
         "2amigos/2fa-library": "^2.0|^3.0",
         "2amigos/qrcode-library": "^2.0|^3.0",
         "friendsofphp/php-cs-fixer": "^3",
