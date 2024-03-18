@@ -274,17 +274,21 @@ class SessionHistoryDecorator extends Session
     /** @inheritdoc */
     public function gcSession($maxLifetime)
     {
-        return $this->session->gcSession($maxLifetime) &&
-            (
-                false === $this->getModule()->enableSessionHistory ||
-                $this->getDb()->transaction(function () {
-                    return $this->getDb()->createCommand()->update(
-                        $this->sessionHistoryTable,
-                        $this->condition->inactiveData(),
-                        $this->condition->expired()
-                    )->execute();
-                })
-            );
+        $sessionResult = $this->session->gcSession($maxLifetime);
+
+        if ($sessionResult === false || false === $this->getModule()->enableSessionHistory) {
+            return $sessionResult;
+        }
+
+        return $this->getDb()->transaction(function () {
+            $result = $this->getDb()->createCommand()->update(
+                $this->sessionHistoryTable,
+                $this->condition->inactiveData(),
+                $this->condition->expired()
+            )->execute();
+
+            return $result; // This will return the integer count or false
+        });
     }
 
     /** @inheritdoc */
@@ -457,3 +461,4 @@ class SessionHistoryDecorator extends Session
         return Yii::$app->getDb();
     }
 }
+
