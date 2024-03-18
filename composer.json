@@ -69,7 +69,7 @@
         "codeception/module-yii2": "^1.1",
         "codeception/module-asserts": "^2|^3",
         "codeception/module-db": "^2|^3",
-        "phpstan/phpstan": "^1.8"
+        "phpstan/phpstan": "^1|^2"
     },
     "autoload": {
         "psr-4": {
