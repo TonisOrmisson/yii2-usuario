@@ -13,7 +13,10 @@
 - Enh: Keycloak auth client (e.luhr)
 - Fix: Social Network Auth (eluhr)
 - Enh #532: /user/registration/register now shows form validation errors
-- Enh: Allow/suggest new v3 releases of 2amigos 2fa dependencies: 2fa-library, qrcode-library (TonisOrmisson) 
+- Enh: Allow/suggest new v3 releases of 2amigos 2fa dependencies: 2fa-library, qrcode-library (TonisOrmisson)
+- Enh: Added option to disable viewing any other user's profile for non-admin users (TonisOrmisson)
+- Ehn: updated Estonian (et) translation by (TonisOrmisson)
+- Ehn: use recaptcha.net instead of google.com (Eseperio)
 
 ## 1.6.2 Jan 4th, 2024
 
