@@ -22,6 +22,9 @@ use yii\bootstrap5\ActiveForm;
 $this->title = Yii::t('usuario', 'Sign up');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
+
+<?= $this->render('/shared/_alert', ['module' => Yii::$app->getModule('user')]) ?>
+
 <div class="row">
     <div class="col"></div>
 
@@ -43,7 +46,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
                 <?= $form->field($model, 'username') ?>
 
-                <?php if ($module->generatePasswords === false): ?>
+                <?php if ($module->isPasswordRequiredOnRegistration()): ?>
                     <?= $form->field($model, 'password')->passwordInput() ?>
                 <?php endif ?>
 

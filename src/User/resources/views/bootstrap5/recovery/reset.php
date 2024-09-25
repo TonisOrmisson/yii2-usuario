@@ -21,6 +21,9 @@ use yii\bootstrap5\ActiveForm;
 $this->title = Yii::t('usuario', 'Reset your password');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
+
+<?= $this->render('/shared/_alert', ['module' => Yii::$app->getModule('user')]) ?>
+
 <div class="row">
     <div class="col"></div>
     <div class="col-xs-8 col-sm-7 col-md-6 col-lg-5 col-xl-4 ">
