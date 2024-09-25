@@ -13,6 +13,7 @@ class RegistrationCest
     public function _before(FunctionalTester $I)
     {
         $I->haveFixtures(['user' => UserFixture::class]);
+        $I->haveFixtures(['token' => TokenFixture::class]);
     }
 
     public function _after(FunctionalTester $I)
