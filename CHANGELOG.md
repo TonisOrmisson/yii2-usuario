@@ -2,13 +2,11 @@
 
 ## dev
 
-- Fix: Update last_login_at and last_login_ip on social networt authenticate (e.luhr)
 - Enh: Keycloak auth client (e.luhr)
 - Fix: Social Network Auth (eluhr)
-- Enh #532: /user/registration/register now shows form validation errors
-- Enh: Allow/suggest new v3 releases of 2amigos 2fa dependencies: 2fa-library, qrcode-library (TonisOrmisson) 
-- Enh: Added option to disable viewing any other user's profile for non-admin users (TonisOrmisson)
-- Ehn: updated Estonian (et) translation by (TonisOrmisson)
+- Enh: Added Bootstrap 5 UI, UI related dependencies are suggested not required (you may choose your UI frmawork)  (TonisOrmisson)
+- Enh: Raised phpstan static code analyzer level 1=>5 with fixes (TonisOrmisson)
+- Enh: Raised minimum PHP version 7.4=>8.0 (TonisOrmisson)
 
 ## 1.6.2 Jan 4th, 2024
 
