@@ -82,8 +82,6 @@ class LoginForm extends Model
 
     /**
      * {@inheritdoc}
-     *
-     * @throws \Da\TwoFA\Exception\InvalidSecretKeyException (only if package is being used)
      */
     public function rules()
     {

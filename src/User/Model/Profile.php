@@ -69,8 +69,6 @@ class Profile extends ActiveRecord
 
     /**
      * {@inheritdoc}
-     *
-     * @throws InvalidConfigException
      */
     public function rules()
     {

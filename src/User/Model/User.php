@@ -81,10 +81,6 @@ class User extends ActiveRecord implements IdentityInterface
 
     /**
      * {@inheritdoc}
-     *
-     * @throws InvalidParamException
-     * @throws InvalidConfigException
-     * @throws Exception
      */
     public static function tableName()
     {
