@@ -278,12 +278,11 @@ class SessionHistoryDecorator extends Session
             (
                 false === $this->getModule()->enableSessionHistory ||
                 $this->getDb()->transaction(function () {
-                    $this->getDb()->createCommand()->update(
+                    return $this->getDb()->createCommand()->update(
                         $this->sessionHistoryTable,
                         $this->condition->inactiveData(),
                         $this->condition->expired()
                     )->execute();
-                    return true;
                 })
             );
     }
