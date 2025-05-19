@@ -138,8 +138,8 @@ class AuthDbManagerComponent extends DbManager implements AuthManagerInterface
     /**
      * Recursively finds all parents and grandparents of the specified item.
      * @param string $name the name of the item whose children are to be looked for.
-     * @param array $result the children and grand children (in array keys)
-     * @param null|integer $depth The depth to which to search recursively, if null it won't have any limit. Defaults to `null`.
+     * @param-out array $result the children and grand children (in array keys)
+     * @param-out null|int $depth The depth to which to search recursively, if null it won't have any limit. Defaults to `null`.
      * @since 1.6.1
      */
     protected function getParentsRecursive($name, &$result = [], &$depth = null)

@@ -1,0 +1,13 @@
+parameters:
+	ignoreErrors:
+		-
+			message: '#^Method Da\\User\\Component\\AuthDbManagerComponent\:\:getParentsRecursive\(\) never assigns null to &\$depth so it can be removed from the @param\-out type\.$#'
+			identifier: paramOut.unusedType
+			count: 1
+			path: src/User/Component/AuthDbManagerComponent.php
+
+		-
+			message: '#^Parameter &\$depth @param\-out type of method Da\\User\\Component\\AuthDbManagerComponent\:\:getParentsRecursive\(\) expects int\|null, \(float\|int\) given\.$#'
+			identifier: paramOut.type
+			count: 1
+			path: src/User/Component/AuthDbManagerComponent.php
